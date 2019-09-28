@@ -16,9 +16,10 @@
       </header>
    <body class=bgc>
       <div class="col-sm-3 sidenav"> 
-         <img class=disImg src="afterpractice.jpg" alt="My favorite piece by guweiz">
+         <img class="disImg" src="afterpractice.jpg" alt="My favorite piece by guweiz">
          <?php
-         echo "today is " + getdate();
+         $mydate=getdate(date("U"));
+		 echo "$mydate[weekday], $mydate[month] $mydate[mday], $mydate[year]";
          ?>
       </div>
       <div class="col-sm-8 text-left">
