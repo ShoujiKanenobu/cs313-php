@@ -31,16 +31,16 @@
             if(is_array($cart)) {
             foreach ($cart as $item) {
             if($cart[$item] == 1) {
-               echo "Teddy Bear";
+               echo "Teddy Bear <br>";
             }
             if($cart[$item] == 2) {
-               echo "Lego Set";
+               echo "Lego Set <br>";
             }
             if($cart[$item] == 3) {
-               echo "Puzzle";
+               echo "Puzzle <br>";
             }
             if($cart[$item] == 4) {
-               echo "Action Figure";
+               echo "Action Figure <br>";
             }
             }
             }
