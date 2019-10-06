@@ -30,7 +30,18 @@
          <?php
             if(is_array($cart)) {
             foreach ($cart as $item) {
-            echo $cart[$item] . "<br>";
+            if($cart[$item] == 1) {
+               echo "Teddy Bear";
+            }
+            if($cart[$item] == 2) {
+               echo "Lego Set";
+            }
+            if($cart[$item] == 3) {
+               echo "Puzzle";
+            }
+            if($cart[$item] == 4) {
+               echo "Action Figure";
+            }
             }
             }
             ?>

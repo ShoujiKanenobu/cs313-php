@@ -23,7 +23,7 @@ array_push($_SESSION['cart'], $_GET[id]);
    <header>
       <ul>
          <li><a class = "active">Shopping</a></li>
-         <li><a href=""> <b>View Cart </b> </a></li>
+         <li><a href="shoppingCart.php"> <b>View Cart </b> </a></li>
       </ul>
    </header>
    <body>
