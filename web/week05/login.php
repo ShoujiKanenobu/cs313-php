@@ -10,7 +10,7 @@ if (!isset($_POST['user'])) {
 $db = getDB();
   $query = $db->prepare('SELECT user_first, user_second from friends where LOWER(user_first)=:user OR LOWER(user_second)=:user');
   $query->execute(array(":user" => $user));
-  $rows = $query->fetchALL(PDO::FETCH_ASSOC);
+  $rows = $query->fetchAll(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
