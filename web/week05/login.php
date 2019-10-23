@@ -27,7 +27,7 @@ $db = getDB();
   <div class="container">
   
   <?php
-  echo "<h3>Friends of " . $user . " are...</h3>");
+  echo "<h3>Friends of " . $user . " are...</h3>";
     foreach($rows as $row) {
       echo "<div class='row'>";
       if($row["user_first"] == $user)
