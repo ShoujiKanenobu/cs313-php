@@ -15,7 +15,8 @@ if (!isset($_POST['selfInput'])) {
 $db = getDb();
 
 try {
-	$query = 'SELECT u."summonerName", pl."championId" FROM usersv2 u JOIN players pl ON u."playerID" = pl."playerPk" WHERE u."summonerName" = :self';
+	//$query = 'SELECT u."summonerName", pl."championId" FROM usersv2 u JOIN players pl ON u."playerID" = pl."playerPk" WHERE u."summonerName" = :self';
+	$query = 'SELECT u.summonerName, pl.championId FROM usersv2 u JOIN players pl ON u.playerID = pl.playerPk WHERE u.summonerName" = :self';
 	$statement = $db->prepare($query);
 
 	$statement->bindValue(':self', $self);
@@ -23,16 +24,8 @@ try {
 	$statement->execute();
 	$rows = $statement->fetchALL(PDO::FETCH_ASSOC);
 
-	$worked = true;
-	if(count(rows) > 0)
-	{
-		$summonerName = $rows["summonerName"];
-		$champId = $rows["championId"];
-	} else {
-		$worked = false;
-		$summonerName = "Summoner Does not exist";
-		$champId = -1;
-	}
+	$summonerName = $rows["summonerName"];
+	$champId = $rows["championId"];
 
 	$favChamp = ChIDToName($champId);
 }
@@ -66,7 +59,7 @@ catch (Exception $e) {
 	<?php 
 	if(!worked)
 	{
-		echo $summonerName;
+		echo $favChamp;
 	}
 	//Say if we failed, if they need to create a profile down below, or succeded
 	?>
@@ -92,7 +85,7 @@ catch (Exception $e) {
     <?php
     if(worked)
     {
-    	echo $summonerName + " likes to play " + $favChamp;
+    	echo $summonerName + "enjoys playing " + $favChamp;
     }
     ?>
 
