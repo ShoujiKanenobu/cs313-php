@@ -9,11 +9,13 @@ if (!isset($_POST['summonerInput'])) {
     header("Location: homepage.html");
 } else {
   $user = strtolower($_POST['summonerInput']);
+}
 
 if (!isset($_POST['favoriteChampion'])) {
     header("Location: homepage.html");
 } else {
   $faveChamp = strtolower($_POST['favoriteChampion']);
+}
 
 $serializedFavChamp = NameToChID(faveChamp);
 
@@ -32,6 +34,7 @@ catch (Exception $e) {
 	echo json_encode("Error " . $e->getMessage());
 	die();
 }
+
 ?>
 
 <!DOCTYPE html>
