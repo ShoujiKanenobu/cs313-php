@@ -29,7 +29,7 @@ try {
 		$summonerName = $rows["summonerName"];
 		$champId = $rows["championId"];
 	} else {
-		worked = false;
+		$worked = false;
 		$summonerName = "Summoner Does not exist";
 		$champId = -1;
 	}
