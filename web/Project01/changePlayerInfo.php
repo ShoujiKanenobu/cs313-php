@@ -14,7 +14,7 @@ if (!isset($_POST['summonerInput'])) {
 if (!isset($_POST['favoriteChampion'])) {
     header("Location: homepage.html");
 } else {
-  $faveChamp = strtolower($_POST['favoriteChampion']);
+  $faveChamp = $_POST['favoriteChampion'];
 }
 
 $serializedFavChamp = NameToChID(faveChamp);
