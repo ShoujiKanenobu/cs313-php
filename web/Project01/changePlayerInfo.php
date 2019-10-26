@@ -1,4 +1,7 @@
 <?php
+
+require('connectDb.php');
+
 include 'idToChamp.php';
 include 'champToId.php';
 
@@ -14,6 +17,21 @@ if (!isset($_POST['favoriteChampion'])) {
 
 $serializedFavChamp = NameToChID(faveChamp);
 
+$db = getDb();
+
+try {
+	$query = 'INSERT INTO usersv2 (playerID, summonerName) VALUES (:summonerInput, :serializedFavChamp)';
+	$statement = $db->prepare($query);
+	$statement->execute(array(":summonerInput"=> $summonerInput, ":serializedFavChamp"=> $serializedFavChamp));
+
+	$query = 'INSERT INTO players (championId) VALUES (:serializedFavChamp)';
+	$statement = $db->prepare($query);
+	$statement->execute(array(":serializedFavChamp"=> $serializedFavChamp));
+}
+catch (Exception $e) {
+	echo json_encode("Error " . $e->getMessage());
+	die();
+}
 //database update call to create new user and/or update new champion
 
 //query our new user and see if we get something back
@@ -59,6 +77,7 @@ $serializedFavChamp = NameToChID(faveChamp);
     </form>
     <?php
     //Say we made the change or failed by seeing if we got back anything from our query
+    echo "<div>Added New profile!</div>"
     ?>
   </div>
   <br>
