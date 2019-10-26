@@ -32,11 +32,6 @@ catch (Exception $e) {
 	echo json_encode("Error " . $e->getMessage());
 	die();
 }
-//database update call to create new user and/or update new champion
-
-//query our new user and see if we get something back
-
-
 ?>
 
 <!DOCTYPE html>
@@ -76,8 +71,7 @@ catch (Exception $e) {
       <input type="submit" name="submitChange" id="submitChangeButton" value="Change!">
     </form>
     <?php
-    //Say we made the change or failed by seeing if we got back anything from our query
-    echo "<div>Added New profile!</div>"
+    	echo "<div>Added New profile!</div>";
     ?>
   </div>
   <br>
