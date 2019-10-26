@@ -3,7 +3,7 @@
 require('connectDb.php');
 
 include 'idToChamp.php';
-include 'champToId.php';
+include 'champToID.php';
 
 if (!isset($_POST['summonerInput'])) {
     header("Location: homepage.html");
