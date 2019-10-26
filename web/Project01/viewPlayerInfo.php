@@ -15,8 +15,8 @@ if (!isset($_POST['selfInput'])) {
 $db = getDb();
 
 try {
-	//$query = 'SELECT u."summonerName", pl."championId" FROM usersv2 u JOIN players pl ON u."playerID" = pl."playerPk" WHERE u."summonerName" = :self';
-	$query = 'SELECT u.summonerName, pl.championId FROM usersv2 u JOIN players pl ON u.playerID = pl.playerPk WHERE u.summonerName = :self';
+	$query = 'SELECT u."summonerName", pl."championId" FROM usersv2 u JOIN players pl ON u."playerID" = pl."playerPk" WHERE u."summonerName" = :self';
+	//$query = 'SELECT u.summonerName, pl.championId FROM usersv2 u JOIN players pl ON u.playerID = pl.playerPk WHERE u.summonerName = :self';
 	$statement = $db->prepare($query);
 
 	$statement->bindValue(':self', $self);
