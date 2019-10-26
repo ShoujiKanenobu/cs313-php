@@ -24,8 +24,8 @@ try {
 	$statement->execute();
 	$rows = $statement->fetchALL(PDO::FETCH_ASSOC);
 
-	$summonerName = $rows["summonerName"];
-	$champId = $rows["championId"];
+	$summonerName = $rows["u.summonerName"];
+	$champId = $rows["pl.championId"];
 
 	$favChamp = ChIDToName($champId);
 }
