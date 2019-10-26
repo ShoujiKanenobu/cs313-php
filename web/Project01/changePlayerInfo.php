@@ -22,13 +22,13 @@ $serializedFavChamp = NameToChID(faveChamp);
 $db = getDb();
 
 try {
-	$query = 'INSERT INTO usersv2 (playerID, summonerName) VALUES (:summonerInput, :serializedFavChamp)';
-	$statement = $db->prepare($query);
-	$statement->execute(array(":summonerInput"=> $summonerInput, ":serializedFavChamp"=> $serializedFavChamp));
-
 	$query = 'INSERT INTO players (championId) VALUES (:serializedFavChamp)';
 	$statement = $db->prepare($query);
 	$statement->execute(array(":serializedFavChamp"=> $serializedFavChamp));
+
+	$query = 'INSERT INTO usersv2 (summonerName) VALUES (:summonerInput)';
+	$statement = $db->prepare($query);
+	$statement->execute(array(":summonerInput"=> $summonerInput));
 }
 catch (Exception $e) {
 	echo json_encode("Error " . $e->getMessage());
