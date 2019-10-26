@@ -36,6 +36,10 @@ try {
 
 	$favChamp = ChIDToName($champId);
 }
+catch (Exception $e) {
+	echo json_encode("Error " . $e->getMessage());
+	die();
+}
 ?>
 
 <!DOCTYPE html>
