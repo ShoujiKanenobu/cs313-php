@@ -2,16 +2,31 @@
 
 function getDb()
 {
-    try {
-        $db = parse_url(getenv("DATABASE_URL"));
-        
-        $pdo = new PDO("pgsql:" . sprintf("host=%s;port=%s;user=%s;password=%s;dbname=%s", $db["host"], $db["port"], $db["user"], $db["pass"], ltrim($db["path"], "/")));
+    try
+    {
+      $dbUrl = getenv('DATABASE_URL');
+  
+        $dbOpts = parse_url($dbUrl);
+  
+        $dbHost = $dbOpts["host"];
+        $dbPort = $dbOpts["port"];
+        $dbUser = $dbOpts["user"];
+        $dbPassword = $dbOpts["pass"];
+        $dbName = ltrim($dbOpts["path"],'/');
+  
+        $db = new PDO("pgsql:host=$dbHost;port=$dbPort;dbname=$dbName", $dbUser, $dbPassword);
+  
         $db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+  
         return $db;
-    }
-    catch (PDOException $ex) {
+      }
+      catch (PDOException $ex)
+      {
         echo 'Error!: ' . $ex->getMessage();
         die();
+      }
+  
+  
     }
     
 }
