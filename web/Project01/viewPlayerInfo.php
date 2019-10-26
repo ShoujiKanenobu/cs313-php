@@ -3,7 +3,7 @@
 require('connectDb.php');
 
 include ("idToChamp.php");
-include ("champToId.php");
+include ("champToID.php");
 
 if (!isset($_POST['selfInput'])) {
     header("Location: homepage.html");
@@ -24,7 +24,7 @@ try {
 	$rows = $statement->fetchALL(PDO::FETCH_ASSOC);
 
 	$worked = true;
-	if($rows->rowCount() > 0)
+	if(count(rows) > 0)
 	{
 		$summonerName = $rows["summonerName"];
 		$champId = $rows["championId"];
