@@ -2,8 +2,8 @@
 
 require('connectDb.php');
 
-include 'idToChamp.php';
-include 'champToId.php';
+include ("idToChamp.php");
+include ("champToId.php");
 
 if (!isset($_POST['selfInput'])) {
     header("Location: homepage.html");
