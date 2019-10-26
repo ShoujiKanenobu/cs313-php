@@ -135,7 +135,7 @@ function NameToChID($id)
     case "Nami": return 267; break;
     case "Jarvan IV": return 59; break;
     case "Ezreal": return 81; break;
-    default: return -1 break;
+    default: return -1; break;
     }
 }
 ?>

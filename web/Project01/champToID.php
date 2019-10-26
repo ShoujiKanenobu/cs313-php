@@ -135,7 +135,7 @@ function ChIDToName($id)
     case 267: return "Nami"; break;
     case 59: return "Jarvan IV"; break;
     case 81: return "Ezreal"; break;
-    default: return "Error:Unknown Champion" break;
+    default: return "Error:Unknown Champion"; break;
     }
 }
 ?>
