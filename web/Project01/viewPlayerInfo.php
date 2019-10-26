@@ -8,7 +8,7 @@ include ("champToID.php");
 if (!isset($_POST['selfInput'])) {
     header("Location: homepage.html");
 } else {
-  $self = strtolower($_POST['selfInput']);
+  $self = $_POST['selfInput'];
 }
 
 //Database Call to see who else has the same favorite champion based on join between get user and fav champ, then join with other users and fav
@@ -18,13 +18,11 @@ try {
 	$query = 'SELECT u."summonerName", pl."championId" FROM usersv2 u JOIN players pl ON u."playerID" = pl."playerPk" WHERE u."summonerName" = :self';
 	//$query = 'SELECT u.summonerName, pl.championId FROM usersv2 u JOIN players pl ON u.playerID = pl.playerPk WHERE u.summonerName = :self';
 	$statement = $db->prepare($query);
+	$statement->execute(array(":self"=> $self));
 
-	$statement->bindValue(':self', $self);
-
-	$statement->execute();
 	$rows = $statement->fetchALL(PDO::FETCH_ASSOC);
 
-	$summonerName = $rows["u.summonerName"];
+	$sumName = $rows["u.summonerName"];
 	$champId = $rows["pl.championId"];
 
 	$favChamp = ChIDToName($champId);
@@ -85,7 +83,7 @@ catch (Exception $e) {
     <?php
     if(worked)
     {
-    	echo $summonerName + "enjoys playing " + $favChamp;
+    	echo $sumName + "enjoys playing " + $favChamp;
     }
     ?>
 
